@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class EraserToolAction extends AbstractAction {
+public class EraserToolAction extends AbstractToolsAction {
 
     private static final Point2D.Double FIRST_POINT = new Point2D.Double(0, 0);
 
@@ -23,8 +23,8 @@ public class EraserToolAction extends AbstractAction {
     
     private final JComponent myComponent;
 
-    public EraserToolAction(final DrawingArea thePanel, final JComponent theComponent){
-        super("Eraser", new ImageIcon("./images/eraser.gif"));
+    public EraserToolAction(final DrawingArea thePanel, final JComponent theComponent, Icon theIcon){
+        super("Eraser", theIcon);
         myPanel = thePanel;
         myComponent = theComponent;
         myTool = (AbstractTool) new EraserTool();

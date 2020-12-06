@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class EllipseToolAction extends AbstractAction {
+public class EllipseToolAction extends AbstractToolsAction {
 
     private static final Point2D.Double FIRST_POINT = new Point2D.Double(0, 0);
 
@@ -23,8 +23,8 @@ public class EllipseToolAction extends AbstractAction {
     
     private final JComponent myComponent;
 
-    public EllipseToolAction(final DrawingArea thePanel, final JComponent theComponent){
-        super("Ellipse", new ImageIcon("./images/ellipse.gif"));
+    public EllipseToolAction(final DrawingArea thePanel, final JComponent theComponent, Icon theIcon){
+        super("Ellipse", theIcon);
         myPanel = thePanel;
         myComponent = theComponent;
         myTool = (AbstractTool) new EllipseTool();

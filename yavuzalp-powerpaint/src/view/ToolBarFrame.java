@@ -26,6 +26,7 @@ import java.util.List;
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -53,7 +54,7 @@ public class ToolBarFrame extends JFrame {
     private List<Action> myOptionsActions;
 
     /** The exit action. */
-    private Action myHelpAction;
+    //private Action myHelpAction;
 
     /** A list of color actions. */
     private List<Action> myToolActions;
@@ -74,7 +75,7 @@ public class ToolBarFrame extends JFrame {
         final JToolBar toolBar = createToolBar();
         add(toolBar, BorderLayout.SOUTH);
         
-        setJMenuBar(new MyMenuBar(myOptionsActions, myHelpAction, myToolActions));
+        setJMenuBar(new MyMenuBar(myOptionsActions, myPanel, myToolActions));
         pack();
 
     }
@@ -91,19 +92,19 @@ public class ToolBarFrame extends JFrame {
     	
         myToolActions = new ArrayList<Action>();
         
-        myToolActions.add(new PencilToolAction( new DrawingArea(), myPanel));
+        myToolActions.add(new PencilToolAction(new DrawingArea(), myPanel, new ImageIcon("./images/pencil.gif")));
         
-        myToolActions.add(new LineToolAction(new DrawingArea(), myPanel));
+        myToolActions.add(new LineToolAction(new DrawingArea(), myPanel, new ImageIcon("./images/line.gif")));
         
-        myToolActions.add(new RectangleToolAction(new DrawingArea(), myPanel));
+        myToolActions.add(new RectangleToolAction(new DrawingArea(), myPanel, new ImageIcon("./images/rectangle.gif")));
         
-        myToolActions.add(new EllipseToolAction(new DrawingArea(), myPanel));
+        myToolActions.add(new EllipseToolAction(new DrawingArea(), myPanel, new ImageIcon("./images/ellipse.gif")));
         
-        myToolActions.add(new EraserToolAction(new DrawingArea(), myPanel));
+        myToolActions.add(new EraserToolAction(new DrawingArea(), myPanel, new ImageIcon("./images/eraser.gif")));
         
-        myHelpAction = new HelpMenu("About", new ImageIcon("./resources/w.gif"), this); 
+        //myHelpAction = new HelpMenu("About", new ImageIcon("./resources/w.gif"), this); 
         
-        myPanel.addPropertyChangeListener((PropertyChangeListener) myHelpAction);
+        //myPanel.addPropertyChangeListener((PropertyChangeListener) myHelpAction);
 
     }
 
@@ -120,16 +121,13 @@ public class ToolBarFrame extends JFrame {
         for (final Action ca : myToolActions) {
             final JToggleButton tb = new JToggleButton(ca);
             if(tb.getText().equals("Line")) {
-            	System.out.println(tb.getText());
-            	//bar.getRootPane().setDefaultButton(tb);
-            	//tb.setSelected(true);
+            	tb.setSelected(true);
             }
             btngrp.add(tb);
             bar.add(tb);
         }
         
-        //uncomment if you don't want any of the buttons selected on start. 
-        //btngrp.clearSelection();
+        //uncomment if you don't want any of the buttons selected on start.
 
         return bar;
     }

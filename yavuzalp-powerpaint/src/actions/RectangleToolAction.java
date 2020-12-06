@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class RectangleToolAction extends AbstractAction {
+public class RectangleToolAction extends AbstractToolsAction {
 
     private static final Point2D.Double FIRST_POINT = new Point2D.Double(0, 0);
 
@@ -23,8 +23,8 @@ public class RectangleToolAction extends AbstractAction {
     
     private final JComponent myComponent;
 
-    public RectangleToolAction(final DrawingArea thePanel, final JComponent theComponent){
-        super("Rectangle", new ImageIcon("./images/rectangle.gif"));
+    public RectangleToolAction(final DrawingArea thePanel, final JComponent theComponent, Icon theIcon){
+        super("Rectangle", theIcon);
         myPanel = thePanel;
         myComponent = theComponent;
         myTool = (AbstractTool) new RectangleTool();

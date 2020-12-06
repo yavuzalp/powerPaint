@@ -49,7 +49,7 @@ public class DrawingArea extends JPanel {
 	/** The default height value. */
 	private final Color myColor;
 
-	private final int myStroke;
+	private static int myStroke;
 
 	private Shape myShape;
 
@@ -157,7 +157,10 @@ public class DrawingArea extends JPanel {
 	public Dimension getPreferredSize() {
 		return MIN_SIZE;
 	}
-
+	
+	protected void setStroke(int theStroke) {
+		myStroke=theStroke;
+	}
 	/**
 	 * Mouse Adapter to handle Mouse Events and move the square around.
 	 * 
